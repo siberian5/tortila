@@ -1,7 +1,8 @@
-use <Balka.scad>;
-use <../Parts/Upor.scad>;
+use <c_Balka.scad>;
+use <el_Upor.scad>;
 
-translate([0,-330,0]) Balka3();
+//translate([0,-330,0]) 
+Balka3();
 
 ang = 90 - 65.87;
 

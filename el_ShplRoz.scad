@@ -23,7 +23,7 @@ module ShplRoz() {
             sphere(d = ushiThickns*4.5);
        } 
 
-       ConicBar();
+      ConicBar();
 
     }
 

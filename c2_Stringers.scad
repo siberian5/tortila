@@ -1,5 +1,5 @@
-use <StringerVnesh.scad>;
-use <StringerVnutr.scad>;
+use <c_StringerVnesh.scad>;
+use <c_StringerVnutr.scad>;
 
 Stringers();
 

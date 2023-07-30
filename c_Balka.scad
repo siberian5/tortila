@@ -1,5 +1,5 @@
-use <../Parts/Crestovina.scad>;
-use <../Parts/BalkaMin.scad>;
+use <el_Crestovina.scad>;
+use <el_BalkaMin.scad>;
 
 
 //diamVnesh=48.5;

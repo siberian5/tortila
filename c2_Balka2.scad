@@ -1,5 +1,5 @@
-use <../Parts/Upor.scad>;
-use <Balka.scad>;
+use <el_Upor.scad>;
+use <c_Balka.scad>;
 
 
 Balka2();
@@ -13,6 +13,7 @@ module Balka2() {
     
     translate([0,-932,0]) rotate([0,-ang,0]) Upor();
     translate([0, 932,0]) rotate([0,-ang,0]) Upor();
+    //translate([0, 0,0]) rotate([0,-ang,0]) Upor();
 
     // Какие углы?
 }

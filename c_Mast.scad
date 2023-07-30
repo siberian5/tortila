@@ -1,7 +1,6 @@
-use <../Parts/Shpor.scad>;
-use <../Parts/BoomSteps.scad>;
-use <../Parts/VOkova.scad>;
-
+use <el_Shpor.scad>;
+use <el_BoomSteps.scad>;
+use <el_VOkova.scad>;
 
 mastLength = 5800;
 mastDia = 69;
@@ -16,7 +15,7 @@ shkiv2dia = 30;
 shkiv2wid = 10;
 
 stubWidth = 3;
-okovaRise = 39;
+okovaRise = 689;
 
 
 // Ванты:
@@ -32,7 +31,6 @@ shtagLen = 5461;
 shtagDia = 4;
 
 b2o = 435;
-
 
 
 //translate([ 0 , 0 , - stakH - okovaRise - blokHoleH ]) 
@@ -83,7 +81,8 @@ module Mast(){
     //Оковка вант:
     translate([ 0 , 0 , stakH + blokHoleH + okovaRise ]) 
     VOkova();
-   
+
+/*
     translate([ mastDia/2 + 26 , 0 , stakH + blokHoleH + okovaRise ])
     rotate([ 0 , 0 , vantaAngZ ])
     rotate([ 0 , 180 + vantaAngY , 0 ])
@@ -93,7 +92,7 @@ module Mast(){
     rotate([ 0 , 0 , -vantaAngZ ])
     rotate([ 0 , 180 + vantaAngY , 0 ])
     Vanta();
-
+*/
 
 /*
     //Штаг:

@@ -1,4 +1,4 @@
-use <../Parts/ShplRoz.scad>;
+use <el_ShplRoz.scad>;
 
     legLen = 1347;
     holeOffset = 20;

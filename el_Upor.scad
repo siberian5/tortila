@@ -61,6 +61,7 @@ module Upor() {
         translate([0,0,tubeDia/2+thicns+shplintHoleHeig])
         rotate([0,-90,0])
         cylinder(h=tubeDia,d=shplintHoleDia,center=true);    
+        
 
     }
 

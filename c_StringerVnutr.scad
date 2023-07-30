@@ -1,5 +1,5 @@
-use <../Parts/StringerZadVnutr.scad>;
-use <../Parts/StringerPered.scad>;
+use <el_StringerZadVnutr.scad>;
+use <el_StringerPered.scad>;
 
 
 StringerVnutr();

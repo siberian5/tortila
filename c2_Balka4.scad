@@ -1,5 +1,5 @@
-use <Balka.scad>;
-use <../Parts/RudderSupport.scad>;
+use <c_Balka.scad>;
+use <el_RudderSupport.scad>;
 
 module Balka4() {
 //$fn=100;
