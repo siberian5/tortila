@@ -3,6 +3,8 @@ use <c_PyraFL.scad>;
 use <c_PyraRL.scad>;
 use <c_Mast.scad>;
 use <el_PyraTop.scad>;
+use <el_Ballon50.scad>;
+
 
 // consts:
 b2o = 435;
@@ -39,6 +41,8 @@ okovaLevel = 4099.5; //+100;
 Grid();
 Pyramid();
 MastInstallation();
+Ballons();
+Shtag();
 
 module Pyramid() {
 
@@ -187,5 +191,37 @@ module MastInstallation() {
     //Pyramided();
    
     translate([-dx,0,dz]) rotate([0,-3,0])  Mast();
+
+}
+
+module Ballons() {
+
+    stzoffset = 45.5;
+
+    translate([0,1140,(-220-stzoffset)]) Ballon50();
+    translate([0,-1140,(-220-stzoffset)]) Ballon50();
+}
+
+module Shtag() {
+
+ //mastDia = 69;
+ //thicns = 2;
+ //bigR = 20;
+
+ ang2shtag  = 90-73.05;
+ shtagDia = 4;
+ shtagLen = 6656;
+
+ //okovaLevel = 4099.5+100; // !!!
+
+
+
+     //Штаг:
+     //translate([ mastDia/2 + bigR + 2*thicns , 0 , okovaLevel + bigR ])
+     translate([-b2o, 0, 0])
+     rotate([ 0 , -ang2shtag , 0 ])
+     translate([0, 0, 50])
+     cylinder( h = shtagLen , d = shtagDia );
+
 
 }
