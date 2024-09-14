@@ -3,6 +3,7 @@ use <c_PyraFL.scad>;
 use <c_PyraRL.scad>;
 use <c_Mast.scad>;
 use <el_PyraTop.scad>;
+use <el_Uhi.scad>;
 use <el_Ballon50.scad>;
 
 
@@ -34,7 +35,9 @@ ang3xz = 65.87;
 //смещение верхушки пирамиды относительно середины второй (!!!) балки. 
 pyrTopOffsetX = 1739.4;
 pyrTopOffsetZ = 1028.3;
-mastPyrOffsetZ = 70 + 61.5;
+pyraTopSphereOffset = 61.5;
+shporSphereDiffOffset = 69.5;
+mastPyrOffsetZ =  pyraTopSphereOffset + shporSphereDiffOffset;
 okovaLevel = 4099.5; //+100;
 
 
@@ -42,7 +45,7 @@ Grid();
 Pyramid();
 MastInstallation();
 Ballons();
-Shtag();
+//Shtag();
 
 module Pyramid() {
 
@@ -167,7 +170,7 @@ echo( "vantaAngZ :" , vantaAngZ);
 
 
 
-
+ 
 // dx, dy, dz завели для того, чтобы начало координат перетаскивать по
 // модели!!!
 
@@ -178,20 +181,34 @@ echo( "vantaAngZ :" , vantaAngZ);
 //    dz = -okovaLevel - pyrTopOffsetZ - mastPyrOffsetZ;
     //- pyrTopOffsetZ; //- 300;
 //    - 5300;
-    dz = pyrTopOffsetZ + mastPyrOffsetZ;
+    //dz = pyrTopOffsetZ + mastPyrOffsetZ;
+    mastRotationCenterZ = pyrTopOffsetZ + pyraTopSphereOffset; // + shporSphereDiffOffset;
+    echo ("pyrTopOffsetZ: " ,  pyrTopOffsetZ);
+    echo ("mastRotationCenterZ: " ,  mastRotationCenterZ);
+
+// pyraTopSphereOffset = 61.5;
+// shporSphereDiffOffset = 69.5;
+// mastPyrOffsetZ =  pyraTopSphereOffset + shporSphereDiffOffset;
 
     echo( "dx :", dx);
-    echo( "dz :", dz);
+    //echo( "dz :", dz);
 
 // ************//    
 
 
 module MastInstallation() {
 
-    //Pyramided();
-   
-    translate([-dx,0,dz]) rotate([0,-3,0])  Mast();
+    ang = 60;
 
+   translate([-dx,0,mastRotationCenterZ]) 
+   rotate([0,-ang,0]) 
+   translate([0,0, shporSphereDiffOffset]) 
+   Mast(); 
+
+   shimH = 5;
+   translate([-dx,0,mastRotationCenterZ])
+   rotate([0,-ang,0]) 
+   translate([0,0, shporSphereDiffOffset-shimH]) Uhi();//    cylinder(h=1, r=100, center=true); 
 }
 
 module Ballons() {

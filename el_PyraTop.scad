@@ -8,7 +8,8 @@ ang3xz = 65.87;
 
 sphereDia = 57;
 horCylDia = 16;
-horCylLen = 62;
+//horCylLen = 62;
+horCylLen = 67;
 vertCylDia = 22;
 vertCylTemp = 55;
 heightDiff = 114;
@@ -22,6 +23,8 @@ plastinaHolesDia = 8.5;
 plastinaHolesDiff = 32; 
 
 sphereHeight =  heightDiff - sphereDia/2 - tubeDia/2; 
+
+//echo("sh =", sphereHeight);
 
 angCut = 45 - ang3xy/2;
 
@@ -48,11 +51,11 @@ module PyraTop() {
     rotate([0,ang2xz+90,0]) 
     Plastina();
 
-    translate([0,0,sphereHeight]) 
-    rotate([90,0,0]) 
+    translate([0,0,sphereHeight])     
+    rotate([90,0,0])     
     cylinder(d = horCylDia,h=horCylLen, center=true);
 
-    translate([0,0,sphereHeight]) 
+    translate([0,0,sphereHeight])     
     rotate([180,0,0]) 
     cylinder(d = vertCylDia, h = vertCylTemp);
 
