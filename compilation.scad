@@ -198,7 +198,7 @@ echo( "vantaAngZ :" , vantaAngZ);
 
 module MastInstallation() {
 
-    ang = 60;
+    ang = 5;
 
    translate([-dx,0,mastRotationCenterZ]) 
    rotate([0,-ang,0]) 

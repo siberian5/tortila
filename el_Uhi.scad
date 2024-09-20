@@ -1,4 +1,5 @@
 
+// projection() rotate([90,0,0]) 
 Uhi();
 
 /*
@@ -67,7 +68,8 @@ module Uhi() {
         dz = uhoHeight/2 -holeDia/2 -11 ; // shporH/2-holeDia/2 -11;
 
         // Дырки под болты
-        translate([0,0,dz]) rotate([0,0,45]) rotate([90,0,0]) cylinder(h=shporDia+10,d=holeDia+1,center=true);
+       //  translate([0,0,dz]) 
+    translate([0,0, uhoHeight/2 - 16])         rotate([0,0,45]) rotate([90,0,0]) cylinder(h=shporDia+10,d=holeDia+1,center=true);
         translate([0,0,dz]) rotate([0,0,-45]) rotate([90,0,0]) cylinder(h=shporDia+10,d=holeDia+1,center=true);
         
         // Деление посредине
