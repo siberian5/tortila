@@ -15,7 +15,7 @@ Steps();
 module Steps() {
 
 
-    translate([-thicns - mastDia/2,0,-stepsH/2]) {
+    translate([-thicns - mastDia/2,0, 0]) {
     difference() {
         hull(){
             translate([0,0,thicns]) 
@@ -38,12 +38,14 @@ module Steps() {
 
     }}
 
+    translate([0, 0, stepsH/2]) {
     difference() {
         cylinder(r = mastDia/2 + thicns, h = stepsH, center = true);
         cylinder(r = mastDia/2 , h = stepsH+1, center = true);
         
         tempA = mastDia+2*thicns;
         translate([tempA/2,0,0]) cube([tempA, tempA, stepsH+1], center = true);
+    }
     }
     
 
