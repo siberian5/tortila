@@ -6,6 +6,10 @@ use <el_PyraTop.scad>;
 use <el_Uhi.scad>;
 use <el_Ballon50.scad>;
 use <el_Vanta.scad>;
+use <el_Grot_now.scad>;
+use <c_Boom.scad>;
+use <el_Staksel_now.scad>;
+use <el_Staksel_perspective.scad>;
 
 
 // consts:
@@ -21,7 +25,80 @@ translate([1028.3 + b2o, 0, -6000]) {
   Ballons();
   Vantas();
   Shtag();
+  GrotInstallationNow();
+  BoomInstallationNow();
+  StakselInstallationNow();
+  //StakselInstallationPerspective();
 }
+
+module StakselInstallationPerspective() {
+
+  // Текущий стаксель будет работать, если его поднять на полметра по штагу от центра балки.
+
+  shtagOffset = 660;
+
+  translate([-b2o, 0, 0])
+  rotate([0, -16.24, 0])
+  rotate([0, 0, 15])
+  translate([0, 0, shtagOffset])
+  //Staksel_perspective(2.5, 6, 0.29);
+  Staksel_perspective(3.5, 6, 0.2);
+}
+
+
+module StakselInstallationNow() {
+
+  // Текущий стаксель будет работать, если его поднять на полметра по штагу от центра балки.
+
+  shtagOffset = 1500;
+
+  translate([-b2o, 0, 0])
+  rotate([0, -16.24, 0])
+  rotate([0, 0, 15])
+  translate([0, 0, shtagOffset])
+  Staksel();
+}
+
+
+
+// Инсталляция текущего грота, задранного на самый верх 
+// и оттягиваемого гиком. 
+module BoomInstallationNow() {
+
+    shporSphereDiffOffset = 69.5;
+    pyrTopOffsetX = 1739.4;
+    pyrTopOffsetZ = 1028.3;
+    pyraTopSphereOffset = 61.5;
+
+    mastRotationCenterZ = pyrTopOffsetZ + pyraTopSphereOffset;
+    mastRotationCenterX = b2o + pyrTopOffsetX; 
+
+    translate([-mastRotationCenterX-61.5, 0, mastRotationCenterZ + 99]) 
+    rotate([0, 10,0])
+    Boom();
+
+}
+
+module GrotInstallationNow() {
+
+    grotOffsetZ = 600; 
+
+    shporSphereDiffOffset = 69.5;
+    pyrTopOffsetX = 1739.4;
+    pyrTopOffsetZ = 1028.3;
+    pyraTopSphereOffset = 61.5;
+
+    mastRotationCenterZ = pyrTopOffsetZ + pyraTopSphereOffset;
+    mastRotationCenterX = b2o + pyrTopOffsetX; 
+
+    translate([-mastRotationCenterX, 0, mastRotationCenterZ]) 
+    rotate([0, -2, 0])
+
+    translate([-50, 0, 120 + grotOffsetZ])
+    Grot();
+}
+
+
 
 module Vantas() {
 
