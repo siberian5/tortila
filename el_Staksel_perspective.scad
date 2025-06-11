@@ -11,7 +11,11 @@ module Staksel_perspective(s, fstSka, shkotHeightK){
   fstSkaLen = 1000 * fstSka;
   heightBLen = s * 2 /  fstSka * 1000;
 
+  echo("stacksel heightBLen = ", heightBLen) ;
+
   offsetBLen = fstSkaLen * shkotHeightK;
+  
+  echo("stacksel offsetBLen = ", offsetBLen) ;
 
 
   hull()  { 

@@ -27,22 +27,23 @@ translate([1028.3 + b2o, 0, -6000]) {
   Shtag();
   GrotInstallationNow();
   BoomInstallationNow();
-  StakselInstallationNow();
-  //StakselInstallationPerspective();
+  //StakselInstallationNow();
+  StakselInstallationPerspective();
 }
 
 module StakselInstallationPerspective() {
 
-  // Текущий стаксель будет работать, если его поднять на полметра по штагу от центра балки.
+  // нужно оставить 5 сверху на погон, 15 снизу на закрутку и ещё 15 снизу на натягивание по шкаторине вдоль троса. 
+  // Итого, если 6 метров трос, то шкаторина паруса — 5.65, сдвинута вверх по линии штага на 660 + 300
 
-  shtagOffset = 660;
+  shtagOffset = 660 + 300;
 
   translate([-b2o, 0, 0])
   rotate([0, -16.24, 0])
   rotate([0, 0, 15])
   translate([0, 0, shtagOffset])
   //Staksel_perspective(2.5, 6, 0.29);
-  Staksel_perspective(3.5, 6, 0.2);
+  Staksel_perspective(3.5, 5.65, 0.15);
 }
 
 
