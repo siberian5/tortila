@@ -1,7 +1,26 @@
 
 
+sideA = 1500;
+sideC = 5650;
+sideB = 4960;
 
-Staksel_perspective(2.5, 6, 0.1);
+bcCosA = ( sideB*sideB + sideC*sideC -  sideA*sideA) / 2;
+
+aDegs = acos(bcCosA / (sideB * sideC ));
+
+sideA2 = sideC * sin(aDegs);
+sideB2 = sideC * cos(aDegs);
+
+dH = sideB2 - sideB;
+
+echo ( "sideA2", sideA2) ;
+echo ( "sideB2", sideB2) ;
+echo ( "dH", dH) ;
+
+
+translate([sideA2, 0, -dH])
+rotate([0, -aDegs, 0])
+Staksel_perspective(3.5, 5.65, 0.15);
 
 // (площадь кв мв, длина передней шк-ны м, коэффициент подъёма заднего угла ( 0 ... 1 )
 module Staksel_perspective(s, fstSka, shkotHeightK){
