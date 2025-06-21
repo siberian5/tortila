@@ -18,8 +18,8 @@ echo ( "sideB2", sideB2) ;
 echo ( "dH", dH) ;
 
 
-translate([sideA2, 0, -dH])
-rotate([0, -aDegs, 0])
+// translate([sideA2, 0, -dH])
+// rotate([0, -aDegs, 0])
 Staksel_perspective(3.5, 5.65, 0.15);
 
 // (площадь кв мв, длина передней шк-ны м, коэффициент подъёма заднего угла ( 0 ... 1 )

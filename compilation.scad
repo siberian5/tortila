@@ -6,6 +6,7 @@ use <el_PyraTop.scad>;
 use <el_Uhi.scad>;
 use <el_Ballon50.scad>;
 use <el_Vanta.scad>;
+use <el_Us.scad>;
 use <el_Grot_now.scad>;
 use <c_Boom.scad>;
 use <el_Staksel_now.scad>;
@@ -18,17 +19,43 @@ b3o = 435 + 2200;
 b4o = 435 + 2200 + 1635;
 stzoffset = 45.5;
 
-translate([1028.3 + b2o, 0, -6000]) {
+// translate([1028.3 + b2o, 0, -6000]) {
   Grid();
   Pyramid();
   MastInstallation();
   Ballons();
   Vantas();
-  Shtag();
+  //ShtagNow();
+  ShtagPerspective();
   GrotInstallationNow();
   BoomInstallationNow();
   //StakselInstallationNow();
   StakselInstallationPerspective();
+  UsiInstallation();
+//  }
+
+module UsiInstallation() {
+
+  // Усы длиной 117 см "от заклёпки до центра треугольника"
+
+  tubeRadOffset = 28;
+
+  strOffset = 330 + 650 - 15;
+
+  //b2o = 435;
+  angY = -106.24;
+  angYd = 7.15;
+  angX = 56.75;
+
+  translate([ -b2o + tubeRadOffset, -strOffset, 0])
+  rotate([-angX, 0, 0])
+  rotate([0, angY + angYd, 0])
+  Us(1170);
+  
+  translate([ -b2o + tubeRadOffset, strOffset, 0])
+  rotate([angX, 0, 0])
+  rotate([0, angY +angYd, 0])
+  Us(1170);
 }
 
 module StakselInstallationPerspective() {
@@ -38,7 +65,9 @@ module StakselInstallationPerspective() {
 
   shtagOffset = 660 + 300;
 
-  translate([-b2o, 0, 0])
+  tubeRadOffset = 28;
+
+  translate([-b2o + tubeRadOffset, 0, 0])
   rotate([0, -16.24, 0])
   rotate([0, 0, 15])
   translate([0, 0, shtagOffset])
@@ -122,7 +151,20 @@ module Vantas() {
     Vanta(6384);
 }
 
-module Shtag() {
+module ShtagPerspective() {
+
+    // Вверху 5см зазор, внизу 30см.
+    tubeRadOffset = 28;
+
+    triaHei = 660;
+    testOffset = 0;
+    translate([-b2o + tubeRadOffset, 0, 0])
+    rotate([0, -106.24, 0])
+    translate([triaHei + testOffset, 0, 0])
+    Vanta(6660 - triaHei - testOffset);
+}
+
+module ShtagNow() {
     translate([-b2o, 0, 0])
     rotate([0, -106.24, 0])
     Vanta(6660);
