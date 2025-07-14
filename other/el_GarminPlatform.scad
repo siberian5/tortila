@@ -8,12 +8,12 @@ cubeY = 40;
 cubeZ = 20;
 
 
-translate([0, -26, 0])
-rotate([0, 0, 111])
-GarminKrepa();
+// translate([0, -26, 0])
+// rotate([0, 0, 111])
+// GarminKrepa();
 
-translate([0, 0, -platformThikns])
-rotate([0, 180, 0])
+// translate([0, 0, -platformThikns])
+// rotate([0, 180, 0])
 GarminPlatform();
 
 
@@ -61,73 +61,90 @@ module GarminPlatform() {
 
   difference(){
     translate([0, 0, cubeZ/2])
-    cube([ cubeX , cubeY , cubeZ ] , center=true );
+    cube([ cubeX , cubeY-2 , cubeZ ] , center=true );
 
     translate([0, 0, diamVneshNogi/2])
     rotate([0, 90, 0])
     cylinder(h=platformDia,d=diamVneshNogi,center=true);    
   }
     
-    //translate([0, 0, diamVneshNogi/2])
-    //rotate([0, 90, 0])
-    //cylinder(h=platformDia,d=diamVneshNogi,center=true);    
 
         
-  translate([0, 0, -platformThikns/2])
-  cylinder(h=platformThikns,d=platformDia,center=true);    
+  translate([0, 0, -platformThikns/2]) {
 
-/*
-    $fn = 50;
+    homutHoleX = 12;
+    homutHoleY = 1.5;
+    homutHoleZ = 12;
 
-    py = - uporWid/2;
-
-    // Охват
     difference() {
-        
-        rotate([-90,0,0]) 
-        cylinder(h=uporWid, d = tubeDia+2*thicns,center=true);
-        
-        rotate([-90,0,0]) 
-        cylinder(h=uporWid+2, d = tubeDia,center=true);           
+      cylinder(h=platformThikns,d=platformDia,center=true);    
+
+      translate([cubeX/3, cubeY/2 + homutHoleY/2, 0])
+      cube([homutHoleX, homutHoleY, homutHoleZ], center=true);
+
+      translate([-cubeX/3, cubeY/2 + homutHoleY/2, 0])
+      cube([homutHoleX, homutHoleY, homutHoleZ], center=true);
+      
+      translate([cubeX/3, -cubeY/2 - homutHoleY/2, 0])
+      cube([homutHoleX, homutHoleY, homutHoleZ], center=true);
+
+      translate([-cubeX/3, -cubeY/2 - homutHoleY/2, 0])
+      cube([homutHoleX, homutHoleY, homutHoleZ], center=true);
+
+      translate([-cubeX/3, 0, -platformThikns/2 +homutHoleY/2])
+      cube([homutHoleX, homutHoleY+cubeY, homutHoleY+1], center=true);
+      
+      translate([+cubeX/3, 0, -platformThikns/2 +homutHoleY/2])
+      cube([homutHoleX, homutHoleY+cubeY, homutHoleY+1], center=true);
+
+      translate([+cubeX/3, cubeY/2 - (platformThikns-homutHoleY)/2, homutHoleY/2 + 0.25])
+      cube([homutHoleX, 1+platformThikns-homutHoleY, 1 + platformThikns-homutHoleY-1/2], center=true);
+      
+      translate([+cubeX/3, - cubeY/2 + (platformThikns-homutHoleY)/2, homutHoleY/2 + 0.25])
+      cube([homutHoleX, 1+platformThikns-homutHoleY, 1 + platformThikns-homutHoleY-1/2], center=true);
+
+      translate([-cubeX/3, cubeY/2 - (platformThikns-homutHoleY)/2, homutHoleY/2 + 0.25])
+      cube([homutHoleX, 1+platformThikns-homutHoleY, 1 + platformThikns-homutHoleY-1/2], center=true);
+      
+      translate([-cubeX/3, - cubeY/2 + (platformThikns-homutHoleY)/2, homutHoleY/2 + 0.25])
+      cube([homutHoleX, 1+platformThikns-homutHoleY, 1 + platformThikns-homutHoleY-1/2], center=true);
     }
 
-    difference() 
-    {
+
+   translate([-cubeX/3, -8/2 -3/4 + cubeY/2 - (platformThikns-homutHoleY)/2, platformThikns/2])
+   ocrugl();
    
-        intersection() 
-        {
-            union() 
-            {
-                intersection() 
-                {
+   translate([+cubeX/3, -8/2 -3/4 + cubeY/2 - (platformThikns-homutHoleY)/2, platformThikns/2])
+   ocrugl();
 
-                    //срез полный    
-                    translate([-thicns,py,tubeDia/2+1]) 
-                    cube([thicns*2, uporWid, uporWid]);
-
-                    //сфера
-                    translate([0,0,tubeDia/2+thicns+shplintHoleHeig])
-                    sphere(r=sphereRad);
-                }
-
-                //срез внутренний    
-                translate([-thicns,py,tubeDia/2+1]) 
-                cube([thicns*2, uporWid, uporWid/2+3]);
-            }
-
-            //конус
-            translate([0,0,tubeDia/2+thicns])
-            cylinder(h=uporWid*tan(64)/2,d1=uporWid,d2=0);    
-        }
+   translate([-cubeX/3, +8/2 +3/4 - cubeY/2 + (platformThikns-homutHoleY)/2, platformThikns/2])
+   rotate([0, 0, 180])
+   ocrugl();
+   
+   translate([+cubeX/3, +8/2 +3/4 - cubeY/2 + (platformThikns-homutHoleY)/2, platformThikns/2])
+   rotate([0, 0, 180])
+   ocrugl();
+}
+      
+     // translate([-cubeX/3, 0, -platformThikns/2 +homutHoleY/2])
+      // cube([homutHoleX, homutHoleY+cubeY, homutHoleY+1], center=true);
 
 
+}
 
-        //цилиндр дырки
-        translate([0,0,tubeDia/2+thicns+shplintHoleHeig])
-        rotate([0,-90,0])
-        cylinder(h=tubeDia,d=shplintHoleDia,center=true);    
-        
+module ocrugl() {
+    homutHoleX = 12;
+    homutHoleY = 1.5;
+    homutHoleZ = 12;
 
-    }
-*/
+     intersection() {
+
+       rotate([0, 90, 0])
+       cylinder(h=homutHoleX, d = 16, center=true);
+
+       translate([0, +4, -4])
+       cube([12, 8, 8], center=true);
+
+     }
+
 }
