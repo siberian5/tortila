@@ -11,6 +11,7 @@ use <el_Grot_now.scad>;
 use <c_Boom.scad>;
 use <el_Staksel_now.scad>;
 use <el_Staksel_perspective.scad>;
+use <el_stak_storm_now.scad>;
 
 
 // consts:
@@ -18,6 +19,11 @@ b2o = 435;
 b3o = 435 + 2200;
 b4o = 435 + 2200 + 1635;
 stzoffset = 45.5;
+
+shtagRotAng = 106.45; 
+
+   ang = 2; // Угол завала мачты
+   mastAng = ang;
 
 // translate([1028.3 + b2o, 0, -6000]) {
   Grid();
@@ -32,7 +38,89 @@ stzoffset = 45.5;
   //StakselInstallationNow();
   StakselInstallationPerspective();
   UsiInstallation();
+  StormStakselInstallationV1();
 //  }
+
+module StormStakselInstallationV1() {
+
+// Базовая инсталляция штормового как летучки — с топа.
+
+  ssOffsetShtag = 3700;
+  vantaLen = 8200;
+  vantaDia = 3;
+
+  rotateAdd = 3;
+
+
+
+  pyrTopOffsetX = 1739.4;
+  pyrTopOffsetZ = 1028.3;
+  
+  pyraTopSphereOffset = 61.5;
+
+  mastRotationCenterZ = pyrTopOffsetZ + pyraTopSphereOffset;
+  mastRotationCenterX = b2o + pyrTopOffsetX; 
+
+
+  mastSSOffset = 0;
+
+  ssHeight = 6500;
+
+  rotate([0, -mastAng, 0])
+  translate([mastSSOffset-mastRotationCenterX, 0, mastRotationCenterZ+ssHeight])
+  //rotate([0, 270, 0])
+  rotate([0, 90-shtagRotAng-rotateAdd, 0])
+  rotate([0, 0, 15])
+  {
+    translate([0, 0, -ssOffsetShtag])
+    StakselStorm();
+    rotate([0, 180, 0])
+    cylinder(h=vantaLen, r=vantaDia/2);
+
+  }
+}
+
+
+module StormStakselInstallationV2() {
+
+// Если сделать длиннее бушприт — 
+// Можно будет чуть-чуть повыше поднять парус по передней шкаторине.
+ // ssOffsetShtag = 3700;
+  ssOffsetShtag = 3400;
+  vantaLen = 8200;
+  vantaDia = 3;
+
+  //rotateAdd = 3;
+  rotateAdd = 6;
+
+
+
+  pyrTopOffsetX = 1739.4;
+  pyrTopOffsetZ = 1028.3;
+  
+  pyraTopSphereOffset = 61.5;
+
+  mastRotationCenterZ = pyrTopOffsetZ + pyraTopSphereOffset;
+  mastRotationCenterX = b2o + pyrTopOffsetX; 
+
+
+  mastSSOffset = 0;
+
+  ssHeight = 6500;
+
+  rotate([0, -mastAng, 0])
+  translate([mastSSOffset-mastRotationCenterX, 0, mastRotationCenterZ+ssHeight])
+  //rotate([0, 270, 0])
+  rotate([0, 90-shtagRotAng-rotateAdd, 0])
+  rotate([0, 0, 15])
+  {
+    translate([0, 0, -ssOffsetShtag])
+    StakselStorm();
+    rotate([0, 180, 0])
+    cylinder(h=vantaLen, r=vantaDia/2);
+
+  }
+}
 
 module UsiInstallation() {
 
@@ -43,8 +131,8 @@ module UsiInstallation() {
   strOffset = 330 + 650 - 15;
 
   //b2o = 435;
-  angY = -106.24;
-  angYd = 7.15;
+  angY = -shtagRotAng;
+  angYd = 7.25;// 7.15;
   angX = 56.75;
 
   translate([ -b2o + tubeRadOffset, -strOffset, 0])
@@ -68,7 +156,8 @@ module StakselInstallationPerspective() {
   tubeRadOffset = 28;
 
   translate([-b2o + tubeRadOffset, 0, 0])
-  rotate([0, -16.24, 0])
+  rotate([0, 90 -  shtagRotAng, 0])
+  //rotate([0, -16.24, 0])
   rotate([0, 0, 15])
   translate([0, 0, shtagOffset])
   //Staksel_perspective(2.5, 6, 0.29);
@@ -157,10 +246,11 @@ module ShtagPerspective() {
     tubeRadOffset = 28;
 
     triaHei = 660;
-    testOffset = 0;
+    testOffset = -6;
+    testOffsetA = 6;
     translate([-b2o + tubeRadOffset, 0, 0])
-    rotate([0, -106.24, 0])
-    translate([triaHei + testOffset, 0, 0])
+    rotate([0, -shtagRotAng, 0])
+    translate([triaHei + testOffset + testOffsetA, 0, 0])
     Vanta(6660 - triaHei - testOffset);
 }
 
@@ -180,7 +270,6 @@ module Ballons() {
 
 module MastInstallation() {
 
-   ang = 2;
    shporSphereDiffOffset = 69.5;
 
    pyrTopOffsetX = 1739.4;
