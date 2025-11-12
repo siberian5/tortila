@@ -28,6 +28,13 @@ shkiv2wid = 10;
 
 vOkovaH = 744;
 
+genShkivHoleWid = 12;
+genShkivHoleHei = 40;
+genShkivHoleDrop = 685;
+
+topShkivDrop = 15;
+sndShkivDrop = 150;
+
 //craspTriaOffsetZ = mast1len +  660;
 
 //// Ванты:
@@ -47,7 +54,7 @@ vOkovaH = 744;
 
 // translate([ 0 , 0 , -mast1len - mast2len ]) 
 
-translate([ 0 , 0 , -mast1len - mast2len - vOkovaH])
+translate([ 0 , 0 , -mastLength])
 Mast();
 
 module Mast(){
@@ -69,14 +76,53 @@ module Mast(){
         // Вырезаю ликпаз            
         translate([ -skos , 0 , 0 ]) cylinder( d = mastDia/15, h = mastLength );
 
+        // Текущая "генакерная дырка"
+        translate([30, 0, mastLength-genShkivHoleDrop])  hull() {
+            translate([0, 0, -genShkivHoleHei/2])   cube([ 20 , genShkivHoleWid , genShkivHoleHei] , center = true );
+            translate([-10, 0, 0]) rotate([0, 90, 0]) cylinder( d = genShkivHoleWid, h = 20 );
+        }
+        
+        // дырка топовая перспективная  
+        translate([30, 0, mastLength-topShkivDrop])  hull() {
+            translate([0, 0, -genShkivHoleHei/2])   cube([ 20 , genShkivHoleWid , genShkivHoleHei] , center = true );
+            translate([-10, 0, 0]) rotate([0, 90, 0]) cylinder( d = genShkivHoleWid, h = 20 );
+        }
+        
+        // дырка вторая перспективная  
+        translate([30, 0, mastLength-sndShkivDrop])  hull() {
+            translate([0, 0, -genShkivHoleHei/2])   cube([ 20 , genShkivHoleWid , genShkivHoleHei] , center = true );
+            translate([-10, 0, 0]) rotate([0, 90, 0]) cylinder( d = genShkivHoleWid, h = 20 );
+        }
 
-    }
+    }   
+        
+    // Текущий генакерный шкив
+    translate([2+ mastDia/2-shkiv2dia/2, 0, mastLength-genShkivHoleDrop-shkiv2dia/2 -7])
+    rotate([90,0, 0]) cylinder( d = shkiv2dia, h = shkiv2wid , center=true);
+
+    // топовый перспективный шкив
+    translate([2+ mastDia/2-shkiv2dia/2, 0, mastLength-topShkivDrop-shkiv2dia/2 -7])
+    rotate([90,0, 0]) cylinder( d = shkiv2dia, h = shkiv2wid , center=true);
+
+    // второй перспективный шкив
+    translate([2+ mastDia/2-shkiv2dia/2, 0, mastLength-sndShkivDrop-shkiv2dia/2 -7])
+    rotate([90,0, 0]) cylinder( d = shkiv2dia, h = shkiv2wid , center=true);
 
 
-    //топовый шкив:
+
+
+
+
+
+    //топовый гротовый шкив:
     translate([ -44, 0 , mastLength - shkiv2dia/2 ]) 
     rotate([ 90 , 0 , 0 ]) 
     cylinder( d = shkiv2dia, h = shkiv2wid, center=true);
+
+
+
+
+
 
     translate([ -44, 0 , mastLength - shkiv2dia/4 ])
     cube([ shkiv2dia , shkiv2wid , shkiv2dia/2 ] , center = true );

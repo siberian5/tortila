@@ -9,15 +9,21 @@ use <el_Vanta.scad>;
 use <el_Us.scad>;
 use <el_Grot_now.scad>;
 use <c_Boom.scad>;
+use <c_Bushprit.scad>;
 use <el_Staksel_now.scad>;
 use <el_Staksel_perspective.scad>;
 use <el_stak_storm_now.scad>;
 
 
+
+
 // consts:
 b2o = 435;
+b25o = 435 + 800;
 b3o = 435 + 2200;
+b35o = 435 + 2200 + 1235;
 b4o = 435 + 2200 + 1635;
+
 stzoffset = 45.5;
 
 shtagRotAng = 106.45; 
@@ -38,8 +44,24 @@ shtagRotAng = 106.45;
   //StakselInstallationNow();
   StakselInstallationPerspective();
   UsiInstallation();
-  StormStakselInstallationV1();
+  BushpritInstallation();
+//  StormStakselInstallationV1();
 //  }
+
+module BushpritInstallation() {
+
+  bushpritLen = 2000;
+
+  okovaOffset = 40;
+
+   translate([-b25o, 0, 0]) 
+   rotate([0, -10, 0]) 
+   translate([okovaOffset, 0, 0]) 
+   rotate([0, 0, 0]) 
+   //rotate([0, 0, 35]) 
+   Bushprit(bushpritLen);
+  
+}
 
 module StormStakselInstallationV1() {
 
