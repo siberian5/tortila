@@ -64,8 +64,9 @@ module Grot(){
         
 
     //B0
-    translate([ - 2079 , 0 , 0 ])  // 2080 по горизонтали
-    rotate([ 0 , -62.5 , 0 ])
-    cylinder( r = 1000 , h = 1, center = true );
+    // Плоскость работы шкота
+//    translate([ - 2079 , 0 , 0 ])  // 2080 по горизонтали
+//    rotate([ 0 , -62.5 , 0 ])
+//    cylinder( r = 1000 , h = 1, center = true );
 
 }

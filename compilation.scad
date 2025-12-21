@@ -50,12 +50,18 @@ shtagRotAng = 106.45;
 
 module BushpritInstallation() {
 
-  bushpritLen = 2000;
+  bushpritLen = 2200;
 
   okovaOffset = 40;
 
+  buspAlpha = atan(200/(435+800));
+
+ echo ("podyom: ", bushpritLen * sin(buspAlpha));
+ echo ("udlin: ", bushpritLen * cos(buspAlpha));
+ // echo ("buspAlpha: ", buspAlpha);
+
    translate([-b25o, 0, 0]) 
-   rotate([0, -10, 0]) 
+   rotate([0, -buspAlpha, 0]) 
    translate([okovaOffset, 0, 0]) 
    rotate([0, 0, 0]) 
    //rotate([0, 0, 35]) 
@@ -300,6 +306,15 @@ module MastInstallation() {
 
    mastRotationCenterZ = pyrTopOffsetZ + pyraTopSphereOffset;
    mastRotationCenterX = b2o + pyrTopOffsetX; 
+
+   // deltaA =  (b3o - mastRotationCenterX) / 3;
+   // echo ("deltaA: ", deltaA);
+
+   // deltaB = pyrTopOffsetX - 800;
+
+   // zelen = deltaA + deltaB + 2170;
+  //  echo ("zelen: ", zelen);
+//    echo ("viol: ", (b4o-b25o+2170)); 
 
    translate([-mastRotationCenterX, 0, mastRotationCenterZ]) 
    rotate([0,-ang,0]) 

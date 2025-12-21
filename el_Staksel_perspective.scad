@@ -62,8 +62,8 @@ module Staksel_perspective(s, fstSka, shkotHeightK){
   // Угол наклона плоскости шкота
   alfa = atan((fstSkaLen/2-offsetBLen)/heightBLen);
     
-  translate([ -pt-heightBLen , 0 , pt + offsetBLen]) 
-  rotate([ 0 , -alfa , 0 ])
-  cylinder( r = pt*2000 , h = pt , center = true );
+//  translate([ -pt-heightBLen , 0 , pt + offsetBLen]) 
+//  rotate([ 0 , -alfa , 0 ])
+//  cylinder( r = pt*2000 , h = pt , center = true );
 
 }
