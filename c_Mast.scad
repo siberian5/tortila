@@ -10,7 +10,7 @@ use <el_Rig.scad>;
 
 mast1len = 2000;
 mast2len = 2500;
-mast3len = 1800;
+mast3len = 2100;
 
 mastLength = mast1len + mast2len + mast3len;
 
@@ -30,10 +30,10 @@ vOkovaH = 744;
 
 genShkivHoleWid = 12;
 genShkivHoleHei = 40;
-genShkivHoleDrop = 685;
+genShkivHoleRise = 1115;
 
-topShkivDrop = 15;
-sndShkivDrop = 150;
+//topShkivDrop = 15;
+sndShkivRise = 1650;
 
 //craspTriaOffsetZ = mast1len +  660;
 
@@ -54,7 +54,7 @@ sndShkivDrop = 150;
 
 // translate([ 0 , 0 , -mast1len - mast2len ]) 
 
-translate([ 0 , 0 , -mastLength])
+//translate([ 0 , 0 , -mastLength])
 Mast();
 
 module Mast(){
@@ -77,19 +77,19 @@ module Mast(){
         translate([ -skos , 0 , 0 ]) cylinder( d = mastDia/15, h = mastLength );
 
         // Текущая "генакерная дырка"
-        translate([30, 0, mastLength-genShkivHoleDrop])  hull() {
+        translate([30, 0, mast1len + mast2len + genShkivHoleRise])  hull() {
             translate([0, 0, -genShkivHoleHei/2])   cube([ 20 , genShkivHoleWid , genShkivHoleHei] , center = true );
             translate([-10, 0, 0]) rotate([0, 90, 0]) cylinder( d = genShkivHoleWid, h = 20 );
         }
         
         // дырка топовая перспективная  
-        translate([30, 0, mastLength-topShkivDrop])  hull() {
-            translate([0, 0, -genShkivHoleHei/2])   cube([ 20 , genShkivHoleWid , genShkivHoleHei] , center = true );
-            translate([-10, 0, 0]) rotate([0, 90, 0]) cylinder( d = genShkivHoleWid, h = 20 );
-        }
+     //    translate([30, 0, mastLength-topShkivDrop])  hull() {
+       //     translate([0, 0, -genShkivHoleHei/2])   cube([ 20 , genShkivHoleWid , genShkivHoleHei] , center = true );
+       //     translate([-10, 0, 0]) rotate([0, 90, 0]) cylinder( d = genShkivHoleWid, h = 20 );
+       // }
         
         // дырка вторая перспективная  
-        translate([30, 0, mastLength-sndShkivDrop])  hull() {
+        translate([30, 0, mast1len+mast2len+sndShkivRise])  hull() {
             translate([0, 0, -genShkivHoleHei/2])   cube([ 20 , genShkivHoleWid , genShkivHoleHei] , center = true );
             translate([-10, 0, 0]) rotate([0, 90, 0]) cylinder( d = genShkivHoleWid, h = 20 );
         }
@@ -97,15 +97,15 @@ module Mast(){
     }   
         
     // Текущий генакерный шкив
-    translate([2+ mastDia/2-shkiv2dia/2, 0, mastLength-genShkivHoleDrop-shkiv2dia/2 -7])
+    translate([2+ mastDia/2-shkiv2dia/2, 0, mast1len+mast2len+genShkivHoleRise-shkiv2dia/2 -7])
     rotate([90,0, 0]) cylinder( d = shkiv2dia, h = shkiv2wid , center=true);
 
     // топовый перспективный шкив
-    translate([2+ mastDia/2-shkiv2dia/2, 0, mastLength-topShkivDrop-shkiv2dia/2 -7])
-    rotate([90,0, 0]) cylinder( d = shkiv2dia, h = shkiv2wid , center=true);
+    //translate([2+ mastDia/2-shkiv2dia/2, 0, mastLength-topShkivDrop-shkiv2dia/2 -7])
+    //rotate([90,0, 0]) cylinder( d = shkiv2dia, h = shkiv2wid , center=true);
 
     // второй перспективный шкив
-    translate([2+ mastDia/2-shkiv2dia/2, 0, mastLength-sndShkivDrop-shkiv2dia/2 -7])
+    translate([2+ mastDia/2-shkiv2dia/2, 0, mast1len+mast2len+sndShkivRise-shkiv2dia/2 -7])
     rotate([90,0, 0]) cylinder( d = shkiv2dia, h = shkiv2wid , center=true);
 
 

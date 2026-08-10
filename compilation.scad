@@ -10,9 +10,12 @@ use <el_Us.scad>;
 use <el_Grot_now.scad>;
 use <c_Boom.scad>;
 use <c_Bushprit.scad>;
+use <c_Alyona_kliver.scad>;
+use <el_gen_shtag.scad>;
 use <el_Staksel_now.scad>;
 use <el_Staksel_perspective.scad>;
 use <el_stak_storm_now.scad>;
+use <el_GollandecGenoa.scad>;
 
 
 
@@ -31,26 +34,35 @@ shtagRotAng = 106.45;
    ang = 2; // Угол завала мачты
    mastAng = ang;
 
-// translate([1028.3 + b2o, 0, -6000]) {
+//  translate([1028.3 + b2o, 0, -6000]) {
   Grid();
   Pyramid();
   MastInstallation();
   Ballons();
   Vantas();
-  //ShtagNow();
   ShtagPerspective();
   GrotInstallationNow();
   BoomInstallationNow();
-  //StakselInstallationNow();
   StakselInstallationPerspective();
   UsiInstallation();
   BushpritInstallation();
-//  StormStakselInstallationV1();
-//  }
+  //}
 
 module BushpritInstallation() {
 
   bushpritLen = 2200;
+
+  genShtagLen = 7655; // антиторсион, в дырку генакера
+  genShtagZaval = 106.35;
+
+  kliverShtagLen = 7180; // оттуда же — в дырку кливера
+  kliverShtagZaval = 108.05;
+  
+  kliverShortShtagLen = 7525; // с 3/4 — в дырку генакера
+  kliverShortShtagZaval = 102.53;
+  
+  kliverShort2ShtagLen = 7050; // с 3/4 — в дырку кливера
+  kliverShort2ShtagZaval = 104.0;
 
   okovaOffset = 40;
 
@@ -64,9 +76,117 @@ module BushpritInstallation() {
    rotate([0, -buspAlpha, 0]) 
    translate([okovaOffset, 0, 0]) 
    rotate([0, 0, 0]) 
-   //rotate([0, 0, 35]) 
    Bushprit(bushpritLen);
+
+   // кливер по антиторсиону, в дырку генакера: 
+   // сверху спуск 0.5м, 
+   // внизу остаток 1.275.
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen+okovaOffset-30, 0, 40]) 
+//   rotate([0, -genShtagZaval, 0]) 
+//   GenShtag(genShtagLen);
+//   
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen+okovaOffset-30, 0, 40]) 
+//   rotate([0, 90-genShtagZaval, 0]) 
+//   rotate([0, 0, 20])
+//   AlyanaKliver(genShtagLen, 500);
+   
+   // кливер оттуда же, в дырку кливера
+   // вариант неудачный
+
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen+okovaOffset-30, 0, 40]) 
+//   rotate([0, -kliverShtagZaval, 0]) 
+//   GenShtag(kliverShtagLen);
+//
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen+okovaOffset-30, 0, 40]) 
+//   rotate([0, 90-kliverShtagZaval, 0]) 
+//   rotate([0, 0, 20])
+//   AlyanaKliver(kliverShtagLen, 500);
+
   
+   // кливер с 3/4, в дырку генакера: 
+   // сверху спуск 1м, 
+   // внизу остаток 0.645м.
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen * 3/4 + okovaOffset , 0, 40]) 
+//   rotate([0, -kliverShortShtagZaval, 0]) 
+//   GenShtag(kliverShortShtagLen);
+//
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen * 3 / 4 + okovaOffset, 0, 40]) 
+//   rotate([0, 90-kliverShortShtagZaval, 0]) 
+//   rotate([0, 0, 20])
+//   AlyanaKliver(kliverShortShtagLen, 1000);
+
+
+   // кливер с 3/4, в дырку кливера: 
+   // сверху спуск 30см, 
+   // внизу остаток 0.87м
+   
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen * 3/4 + okovaOffset , 0, 40]) 
+//   rotate([0, -kliverShort2ShtagZaval, 0]) 
+//   GenShtag(kliverShort2ShtagLen);
+//
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen * 3 / 4 + okovaOffset, 0, 40]) 
+//   rotate([0, 90-kliverShort2ShtagZaval, 0]) 
+//   rotate([0, 0, 20])
+//   AlyanaKliver(kliverShort2ShtagLen, 300);
+   
+
+/////// ....Genoa.... //////
+
+
+  
+   // Генуя с 3/4, в дырку генакера: 
+   // сверху спуск 1м, 
+   // внизу ... 
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen * 3/4 + okovaOffset , 0, 40]) 
+//   rotate([0, -kliverShortShtagZaval, 0]) 
+//   GenShtag(kliverShortShtagLen);
+//
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen * 3 / 4 + okovaOffset, 0, 40]) 
+//   rotate([0, 90-kliverShortShtagZaval, 0]) 
+//   rotate([0, 0, 20])
+//   GollandecGenoa(kliverShortShtagLen, 1000);
+
+
+   // Генуя с 60%, в дырку генакера: 
+   // сверху спуск 1.7м, 
+   // внизу около полуметра... 
+   genoaShtagZaval = 100.05;
+   genoaShtagLen = 7460;
+   translate([-b25o, 0, 0]) 
+   rotate([0, -buspAlpha, 0]) 
+   translate([bushpritLen * 3/5 + okovaOffset , 0, 40]) 
+   rotate([0, -genoaShtagZaval, 0]) 
+   GenShtag(genoaShtagLen);
+
+   translate([-b25o, 0, 0]) 
+   rotate([0, -buspAlpha, 0]) 
+   translate([bushpritLen * 3 / 5 + okovaOffset, 0, 40]) 
+   rotate([0, 90-genoaShtagZaval, 0]) 
+   rotate([0, 0, 20])
+   GollandecGenoa(genoaShtagLen, 1700);
+
+
+
 }
 
 module StormStakselInstallationV1() {
@@ -212,7 +332,9 @@ module StakselInstallationNow() {
 // и оттягиваемого гиком. 
 module BoomInstallationNow() {
 
-    shporSphereDiffOffset = 69.5;
+    mastIncrease = 300;
+
+   //  shporSphereDiffOffset = 69.5;
     pyrTopOffsetX = 1739.4;
     pyrTopOffsetZ = 1028.3;
     pyraTopSphereOffset = 61.5;
@@ -222,13 +344,14 @@ module BoomInstallationNow() {
 
     translate([-mastRotationCenterX-61.5, 0, mastRotationCenterZ + 99]) 
     rotate([0, 10,0])
+    translate([0, 0, mastIncrease]) 
     Boom();
 
 }
 
 module GrotInstallationNow() {
 
-    grotOffsetZ = 600; 
+    grotOffsetZ = 900; 
 
     shporSphereDiffOffset = 69.5;
     pyrTopOffsetX = 1739.4;

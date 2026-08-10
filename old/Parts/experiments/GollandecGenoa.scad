@@ -15,18 +15,18 @@ cpZ = aZ/3 + perShkat/3;
 
 //d1 = 500;
 
-// echo("area = ", perShkat*aX/2 * (1/1000000)); // 8.5 кв м
+echo("area = ", perShkat*aX/2 * (1/1000000)); // 8.5 кв м
 
 // высота паруса
-//echo (" h = " , perShkat * sin(betta)); // 4921
+echo (" h = " , perShkat * sin(betta)); // 4921
 
 
-Genoa();
+GollandecGenoa();
 
 /* Упрощение!!! */
 
 
-module Genoa() {
+module GollandecGenoa() {
     
     rotate([ 0 , betta - 90 , 0 ])
     rotate([ 0 , 0 , -15 ])
