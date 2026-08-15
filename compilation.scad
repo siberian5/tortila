@@ -60,6 +60,14 @@ module BushpritInstallation() {
   
   kliverShortShtagLen = 7525; // с 3/4 — в дырку генакера
   kliverShortShtagZaval = 102.53;
+
+
+  kliverShort3ShtagLen = 7460; //525; // с 60% — в дырку генакера
+  kliverShort3ShtagZaval = 100.05;// 3.53;
+
+  kliverShort4ShtagLen = 6950; //525; // с 60% — в дырку кливера 
+  kliverShort4ShtagZaval = 101.35;// 3.53;
+
   
   kliverShort2ShtagLen = 7050; // с 3/4 — в дырку кливера
   kliverShort2ShtagZaval = 104.0;
@@ -128,6 +136,44 @@ module BushpritInstallation() {
 //   AlyanaKliver(kliverShortShtagLen, 1000);
 
 
+//   // кливер с 60%, в дырку генакера: 
+//   // сверху спуск 120 ( 130 см вместе с фурнитурой  )
+//   // внизу остаток 25см.
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen * 3/5 + okovaOffset , 0, 40]) 
+//   rotate([0, -kliverShort3ShtagZaval, 0]) 
+//   GenShtag(kliverShort3ShtagLen);
+////
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen * 3 / 5 + okovaOffset, 0, 40]) 
+//   rotate([0, 90-kliverShort3ShtagZaval, 0]) 
+//   rotate([0, 0, 20])
+//   AlyanaKliver(kliverShort3ShtagLen, 1300);
+
+
+
+
+
+   // кливер с 60%, в дырку кливера: 
+   // сверху спуск 
+   // внизу остаток 
+   translate([-b25o, 0, 0]) 
+   rotate([0, -buspAlpha, 0]) 
+   translate([bushpritLen * 3/5 + okovaOffset , 0, 40]) 
+   rotate([0, -kliverShort4ShtagZaval, 0]) 
+   GenShtag(kliverShort4ShtagLen);
+//
+   translate([-b25o, 0, 0]) 
+   rotate([0, -buspAlpha, 0]) 
+   translate([bushpritLen * 3 / 5 + okovaOffset, 0, 40]) 
+   rotate([0, 90-kliverShort4ShtagZaval, 0]) 
+   rotate([0, 0, 20])
+   AlyanaKliver(kliverShort4ShtagLen, 700);
+
+
+
    // кливер с 3/4, в дырку кливера: 
    // сверху спуск 30см, 
    // внизу остаток 0.87м
@@ -170,20 +216,20 @@ module BushpritInstallation() {
    // Генуя с 60%, в дырку генакера: 
    // сверху спуск 1.7м, 
    // внизу около полуметра... 
-   genoaShtagZaval = 100.05;
-   genoaShtagLen = 7460;
-   translate([-b25o, 0, 0]) 
-   rotate([0, -buspAlpha, 0]) 
-   translate([bushpritLen * 3/5 + okovaOffset , 0, 40]) 
-   rotate([0, -genoaShtagZaval, 0]) 
-   GenShtag(genoaShtagLen);
-
-   translate([-b25o, 0, 0]) 
-   rotate([0, -buspAlpha, 0]) 
-   translate([bushpritLen * 3 / 5 + okovaOffset, 0, 40]) 
-   rotate([0, 90-genoaShtagZaval, 0]) 
-   rotate([0, 0, 20])
-   GollandecGenoa(genoaShtagLen, 1700);
+//   genoaShtagZaval = 100.05;
+//   genoaShtagLen = 7460;
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen * 3/5 + okovaOffset , 0, 40]) 
+//   rotate([0, -genoaShtagZaval, 0]) 
+//   GenShtag(genoaShtagLen);
+//
+//   translate([-b25o, 0, 0]) 
+//   rotate([0, -buspAlpha, 0]) 
+//   translate([bushpritLen * 3 / 5 + okovaOffset, 0, 40]) 
+//   rotate([0, 90-genoaShtagZaval, 0]) 
+//   rotate([0, 0, 20])
+//   GollandecGenoa(genoaShtagLen, 1700);
 
 
 
