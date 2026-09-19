@@ -11,6 +11,7 @@ use <el_Grot_now.scad>;
 use <c_Boom.scad>;
 use <c_Bushprit.scad>;
 use <c_Alyona_kliver.scad>;
+use <c_Alyona_jib.scad>;
 use <el_gen_shtag.scad>;
 use <el_Staksel_now.scad>;
 use <el_Staksel_perspective.scad>;
@@ -170,7 +171,7 @@ module BushpritInstallation() {
    translate([bushpritLen * 3 / 5 + okovaOffset, 0, 40]) 
    rotate([0, 90-kliverShort4ShtagZaval, 0]) 
    rotate([0, 0, 20])
-   AlyanaKliver(kliverShort4ShtagLen, 700);
+   AlyanaJib(kliverShort4ShtagLen, 700, true);
 
 
 
